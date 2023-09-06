@@ -1,0 +1,41 @@
+{
+    "name": "@gcas/imaged",
+    "version": "1.3.1",
+    "description": "Lightweight TypeScript tools for manipulating images in the browser.",
+    "type": "module",
+    "scripts": {
+        "watch": "rollup --config --watch --no-watch.clearScreen",
+        "dev": "npm run watch",
+        "build": "rollup --config"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gcasro/imaged.git"
+    },
+    "keywords": [
+        "image",
+        "crop",
+        "cropper",
+        "cropperjs",
+        "tools",
+        "upload"
+    ],
+    "author": "Valeriu Paloș <vp@gcas.ro>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/gcasro/imaged/issues"
+    },
+    "homepage": "https://github.com/gcasro/imaged#readme",
+    "devDependencies": {
+        "@rollup/plugin-terser": "^0.4.0",
+        "@rollup/plugin-typescript": "^11.0.0",
+        "rollup": "^3.19.1",
+        "rollup-plugin-import-css": "^3.2.1",
+        "tslib": "^2.5.0",
+        "typescript": "^4.9.5"
+    },
+    "prettier": {
+        "printWidth": 160,
+        "tabWidth": 4
+    }
+}

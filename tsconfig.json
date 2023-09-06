@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+        "ignoreDeprecations": "5.0",
+
+        /* Basic Options */
+        "target": "ES2018",
+        "module": "ESNext",
+        "lib": ["ESNext", "DOM"],
+        "allowJs": true,
+        "checkJs": true,
+        "incremental": false,
+        "noEmit": true,
+        "declaration": true,
+        "importsNotUsedAsValues": "error",
+
+        /* Strict Type-Checking Options */
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+
+        /* Additional Checks */
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": false,
+        "noFallthroughCasesInSwitch": false,
+
+        /* Module Resolution Options */
+        "baseUrl": ".",
+        "outDir": "./dist",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "types": [],
+        "esModuleInterop": true,
+        "preserveSymlinks": true,
+        "skipLibCheck": true
+    },
+
+    "include": ["*.d.ts", "src/**/*.d.ts", "src/**/*.ts", "src/**/*.js"],
+    "exclude": ["node_modules/**", "**/node_modules/**"]
+}

@@ -1,0 +1,103 @@
+:host {
+    --border-size: 4px;
+    --knob-size: 16px;
+
+    --knob-near: calc(0px - var(--knob-size) / 2 + var(--border-size) / 2);
+    --knob-half: calc(0px - var(--knob-size) / 2);
+    --knob-over: calc(0px - var(--knob-size) / 2 - var(--border-size) / 2);
+
+    --frame-color: #eee;
+    --active-color: #fff;
+
+    user-select: none;
+}
+
+#overlay {
+    fill: #555;
+    opacity: 0.75;
+}
+
+#frame {
+    box-sizing: content-box;
+    border: var(--border-size) solid var(--frame-color);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5), inset 0 0 2px rgba(0, 0, 0, 0.5);
+    cursor: grab;
+    margin: calc(0px - var(--border-size));
+
+    transition: 100ms border-color ease-out;
+}
+
+#frame.active {
+    border-color: var(--active-color);
+}
+
+#frame .knob {
+    width: var(--knob-size);
+    height: var(--knob-size);
+
+    border-radius: 2px;
+    background-color: var(--frame-color);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.8);
+
+    transition: 100ms background-color ease-out;
+}
+
+#frame .knob.active {
+    background-color: var(--active-color);
+}
+
+#n {
+    transform: translateX(var(--knob-half)) translateY(var(--knob-over));
+    left: 50%;
+    top: 0%;
+    cursor: ns-resize;
+}
+
+#ne {
+    transform: translateX(var(--knob-near)) translateY(var(--knob-over));
+    left: 100%;
+    top: 0%;
+    cursor: ne-resize;
+}
+
+#e {
+    transform: translateX(var(--knob-near)) translateY(var(--knob-half));
+    left: 100%;
+    top: 50%;
+    cursor: ew-resize;
+}
+
+#se {
+    transform: translateX(var(--knob-near)) translateY(var(--knob-near));
+    left: 100%;
+    top: 100%;
+    cursor: se-resize;
+}
+
+#s {
+    transform: translateX(var(--knob-half)) translateY(var(--knob-near));
+    left: 50%;
+    top: 100%;
+    cursor: ns-resize;
+}
+
+#sw {
+    transform: translateX(var(--knob-over)) translateY(var(--knob-near));
+    left: 0%;
+    top: 100%;
+    cursor: sw-resize;
+}
+
+#w {
+    transform: translateX(var(--knob-over)) translateY(var(--knob-half));
+    left: 0%;
+    top: 50%;
+    cursor: ew-resize;
+}
+
+#nw {
+    transform: translateX(var(--knob-over)) translateY(var(--knob-over));
+    left: 0%;
+    top: 0%;
+    cursor: nw-resize;
+}

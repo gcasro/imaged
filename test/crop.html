@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Imaged Crop</title>
+
+        <script src="../dist/Crop.js"></script>
+
+        <style type="text/css">
+            .gcas.crop.shade {
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+        </style>
+    </head>
+
+    <script>
+        let crop;
+
+        function install(options = {}) {
+            uninstall();
+
+            crop = new Crop("#source", {
+                onCrop() {
+                    this.toCanvas(); // Update the preview canvas in real-time.
+                },
+                ...options,
+                minOutputWidth: 300,
+                minOutputHeight: 300,
+            });
+
+            document.getElementById("preview").appendChild(crop.toCanvas());
+        }
+
+        function uninstall() {
+            crop?.destroy();
+            crop = undefined;
+            document.getElementById("preview").textContent = "";
+        }
+
+        function download() {
+            if (!crop) {
+                return alert("Click a demo button first!");
+            }
+
+            const data = crop.toDataUrl();
+            const link = document.createElement("a");
+            link.href = data;
+            link.download = "cropped-image.png";
+            link.click();
+        }
+    </script>
+
+    <body onload="install()">
+        <h1>GCAS-Imaged</h1>
+
+        <p>
+            Crop:
+            <button onclick="install()">Basic</button>
+            <button onclick="install({ aspectRatio: 1, roundFrame: true })">Circle</button>
+            <button onclick="install({ aspectRatio: 16 / 9 })">16 / 9</button>
+            <button onclick="install({ aspectRatio: 8 / 10, roundFrame: true })">Oval</button>
+            <button onclick="uninstall()">Uninstall</button>
+        </p>
+
+        <div style="position: relative; display: inline-flex">
+            <img id="source" src="https://picsum.photos/1000/500?1" width="500" height="250" crossorigin />
+        </div>
+
+        <p>
+            Preview
+            <button type="button" onclick="download()">Download</button>
+        </p>
+
+        <div id="preview"></div>
+
+        <p></p>
+    </body>
+</html>
